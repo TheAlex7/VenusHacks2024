@@ -1,12 +1,30 @@
 /* START OF QUESTIONS */
 
-const questions = [
+/*const questions = [
     {
         question: "Which of the following materials is not commonly recyclable?",
         choices: ["Glass", "Paper", "Plastic bags", "Aluminum cans"],
         correctAnswer: 2
     }
-];
+];*/
+
+const questions = require('questions');
+
+// Read the JSON file
+questions.readFile('data.json', 'utf8', (err, data) => {
+    if (err) {
+        console.error('Error reading the JSON file:', err);
+        return;
+    }
+
+    try {
+        const jsonData = JSON.parse(data);
+        console.log(jsonData);
+        // Use the data from the JSON file here
+    } catch (err) {
+        console.error('Error parsing the JSON data:', err);
+    }
+});
 
 /* END OF QUESTIONS */
 
