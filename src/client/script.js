@@ -11,7 +11,7 @@
 const questions = require('questions');
 
 // Read the JSON file
-questions.readFile('data.json', 'utf8', (err, data) => {
+questions.readFile('questions.json', 'utf8', (err, data) => {
     if (err) {
         console.error('Error reading the JSON file:', err);
         return;
