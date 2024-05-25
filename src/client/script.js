@@ -30,8 +30,13 @@ let correctAnswers = 0;
 
 function startQuiz() {
     document.getElementById('home-screen').classList.add('hidden');
+    document.getElementById('game-title').classList.add('hidden');
+    document.getElementById('quote').classList.add('hidden');
+
     document.getElementById('quiz-container').classList.remove('hidden');
+    
     showQuestion();
+    
 }
 
 function showQuestion() {
