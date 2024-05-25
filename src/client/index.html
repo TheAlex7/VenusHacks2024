@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz & Garden App</title>
-    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+
 </head>
 <body>
+
     <div id="home-screen">
         <h1>Welcome</h1>
         <button onclick="startQuiz()">Take Quiz</button>
         <button onclick="visitGarden()">Visit Virtual Garden</button>
     </div>
+
     <div id="quiz-container" class="hidden">
         <h1>Quiz</h1>
         <div id="question-container">
@@ -24,11 +30,12 @@
             </div>
         </div>
     </div>
+
     <div id="garden-container" class="hidden">
         <h1>Your Virtual Garden</h1>
         <div id="garden"></div>
         <button onclick="goHome()">Back to Home</button>
     </div>
-    <script src="script.js"></script>
+
 </body>
 </html>
