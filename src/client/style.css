@@ -3,9 +3,13 @@
 @font-face {
     font-family: flower;
     src: url(./assets/flower.TTF);
+
+    font-family: 'hey comic';
+    src: url(./assets/hey_comic/heyComic.ttf) format('truetype');
+    
 }
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif, 'hey comic';
     background-image: url('./assets/background.png');
     background-size: cover;
     background-position: center;
@@ -56,15 +60,18 @@ body {
     bottom: 0;
 }
 
+
 #quiz-container, #garden-container {
     background: rgba( 0, 48.2, 51.4, 0.6); /* Slightly transparent background */
     padding: 20px;
     color:aliceblue;
-    /* font-family: "Sofia", Arial; */
+    font-family: 'hey comic';
+    /* font-family: "Sofia", Arial;  */
+    font-size: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 500px;
-    height: 700px;
+    height: 800px;
     text-align: center;
 }
 
@@ -73,8 +80,9 @@ body {
     width: 100%;
     padding: 10px;
     margin: 5px 0;
-    background: #007BFF;
-    color: white;
+    background: #F5F5F5;
+    opacity: 0.6;
+    color: rgb(0, 0, 0);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -82,21 +90,24 @@ body {
 }
 
 #garden-container button:hover {
-    background: #0056b3;
+    background: #F5F5F5;
+    opacity: 0.8;
 }
 
 #question {
-    font-size: 18px;
-    margin-bottom: 20px;
+    font-size: 25px;
+    margin-bottom: 10px;
 }
 
-.choice {
+/* .choice {
     display: block;
     width: 100%;
     padding: 10px;
     margin: 5px 0;
-    background: #007BFF;
-    color: white;
+    background: #F5F5F5;
+    opacity: 0.6;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -104,8 +115,32 @@ body {
 }
 
 .choice:hover {
-    background: #0056b3;
+    background: #F5F5F5;
+    opacity: 0.8;
+} */
+
+.choice {
+    display: block;
+    width: 100%;
+    padding: 35px; /* Increased padding */
+    margin: 35px auto; /* Increased margin */
+    background: #F5F5F5;
+    opacity: 0.6;
+    color: rgb(0, 0, 0);
+    font-size: 35px;
+    font-family: 'hey comic';
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
 }
+
+.choice:hover {
+    background: #F5F5F5;
+    opacity: 0.8;
+}
+
+
 
 #garden {
     margin: 20px 0;

@@ -53,27 +53,44 @@ function showQuestion() {
     });
 }
 
+
 function selectAnswer(index) {
     const correctAnswer = questions[currentQuestionIndex].correctAnswer;
+    const choicesElements = document.getElementsByClassName('choice');
 
     if (index === correctAnswer) {
         correctAnswers++;
-        alert('Correct!');
+        // Change background color to green for the correct answer
+        choicesElements[index].style.backgroundColor = '#28a745'; // Green color
     } else {
-        alert('Wrong!');
+        // Change background color to red for the wrong answer
+        choicesElements[index].style.backgroundColor = '#dc3545'; // Red color
+    }
+
+    // Disable further clicks on choices
+    for (let i = 0; i < choicesElements.length; i++) {
+        choicesElements[i].disabled = true;
     }
 
     currentQuestionIndex++;
 
     if (currentQuestionIndex < questions.length) {
-        showQuestion();
+        setTimeout(() => {
+            // Reset background colors and enable choices for next question after a delay
+            for (let i = 0; i < choicesElements.length; i++) {
+                choicesElements[i].style.backgroundColor = '#F5F5F5'; // Reset to default color
+                choicesElements[i].disabled = false;
+            }
+            showQuestion();
+        }, 1000); // Delay for 1 second
     } else {
-        alert('Quiz Completed!');
+        // Quiz Completed message
         document.getElementById('quiz-container').classList.add('hidden');
         document.getElementById('home-screen').classList.remove('hidden');
         currentQuestionIndex = 0;
     }
 }
+
 
 function visitGarden() {
     document.getElementById('home-screen').classList.add('hidden');
