@@ -6,6 +6,9 @@ const questions = [
         choices: ["Paris", "London", "Berlin", "Madrid"],
         correctAnswer: 0
     },
+    {question: "Which of the following materials is not commonly recyclable?",
+	choices: ["Glass", "Paper", "Plastic bags", "Aluminum cans"],
+	correctAnswer: 2},
     {
         question: "Which planet is known as the Red Planet?",
         choices: ["Earth", "Mars", "Jupiter", "Saturn"],
