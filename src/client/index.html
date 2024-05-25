@@ -1,20 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-    <title>Test website</title>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <script src="./index.js"></script>
-
+    <title>Quiz & Garden App</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <div>
-        <p>Hello World! (From HTML)</p>
+    <div id="home-screen">
+        <h1>Welcome</h1>
+        <button onclick="startQuiz()">Take Quiz</button>
+        <button onclick="visitGarden()">Visit Virtual Garden</button>
     </div>
-
+    <div id="quiz-container" class="hidden">
+        <h1>Quiz</h1>
+        <div id="question-container">
+            <p id="question"></p>
+            <div id="choices">
+                <button class="choice" onclick="selectAnswer(0)"></button>
+                <button class="choice" onclick="selectAnswer(1)"></button>
+                <button class="choice" onclick="selectAnswer(2)"></button>
+                <button class="choice" onclick="selectAnswer(3)"></button>
+            </div>
+        </div>
+    </div>
+    <div id="garden-container" class="hidden">
+        <h1>Your Virtual Garden</h1>
+        <div id="garden"></div>
+        <button onclick="goHome()">Back to Home</button>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
