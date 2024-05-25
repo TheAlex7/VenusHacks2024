@@ -1,3 +1,5 @@
+/* START OF QUESTIONS */
+
 const questions = [
     {
         question: "What is the capital of France?",
@@ -20,6 +22,8 @@ const questions = [
         correctAnswer: 3
     }
 ];
+
+/* END OF QUESTIONS */
 
 let currentQuestionIndex = 0;
 let correctAnswers = 0;
