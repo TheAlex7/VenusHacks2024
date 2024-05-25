@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Sofia");
 
+@font-face {
+    font-family: flower;
+    src: url(./assets/fonts/flower.TTF);
+}
+
 body {
     font-family: Arial, sans-serif;
     background-image: url('./assets/background.png');
@@ -46,6 +51,8 @@ body {
     background: rgba(251, 255, 0,1);
     color: rgb(9, 13, 72);
     font-size: 50px;
+    /* font-family: "Sofia", Arial; */
+    font-family: flower, Arial;
     padding: 20px 40px;
     border: none;
     border-radius: 10px;
