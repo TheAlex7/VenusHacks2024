@@ -2,27 +2,9 @@
 
 const questions = [
     {
-        question: "What is the capital of France?",
-        choices: ["Paris", "London", "Berlin", "Madrid"],
-        correctAnswer: 0
-    },
-    {question: "Which of the following materials is not commonly recyclable?",
-	choices: ["Glass", "Paper", "Plastic bags", "Aluminum cans"],
-	correctAnswer: 2},
-    {
-        question: "Which planet is known as the Red Planet?",
-        choices: ["Earth", "Mars", "Jupiter", "Saturn"],
-        correctAnswer: 1
-    },
-    {
-        question: "Who wrote 'To Kill a Mockingbird'?",
-        choices: ["Harper Lee", "J.K. Rowling", "Ernest Hemingway", "Mark Twain"],
-        correctAnswer: 0
-    },
-    {
-        question: "What is the largest ocean on Earth?",
-        choices: ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
-        correctAnswer: 3
+        question: "Which of the following materials is not commonly recyclable?",
+        choices: ["Glass", "Paper", "Plastic bags", "Aluminum cans"],
+        correctAnswer: 2
     }
 ];
 
