@@ -32,6 +32,7 @@ function startQuiz() {
     document.getElementById('quiz-container').classList.remove('hidden');
     
     showQuestion();
+    
 }
 
 function showQuestion() {
