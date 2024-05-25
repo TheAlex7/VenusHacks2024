@@ -2,12 +2,12 @@
 
 @font-face {
     font-family: flower;
-    src: url(./assets/fonts/flower.TTF);
+    src: url(../assets/fonts/flower.TTF);
 }
 
 body {
     font-family: Arial, sans-serif;
-    background-image: url('./assets/images/background.png');
+    background-image: url('../assets/images/background.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

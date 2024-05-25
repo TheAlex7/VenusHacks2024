@@ -128,8 +128,6 @@ const questions = [
     }
 ];
 
-/* END OF QUESTIONS */
-
 let currentQuestionIndex = 0;
 let correctAnswers = 0;
 
