@@ -219,6 +219,11 @@ function showHome() {
 
 }
 
+function exit() {
+	//Returns to home screen when exit button is pressed
+	showHome()
+}
+
 function hideHome() {
     // Hide the home screen, title, and quote
     document.getElementById('home-screen').classList.add('hidden');
