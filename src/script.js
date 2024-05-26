@@ -236,7 +236,6 @@ function visitGarden() {
         flower.className = 'flower';
         gardenElement.appendChild(flower);
     }
-
 }
 
 function showHome() {

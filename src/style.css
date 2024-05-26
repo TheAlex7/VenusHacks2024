@@ -20,6 +20,26 @@ body {
     margin: 0;
 }
 
+
+.row {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.row img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.row p {
+    margin: 0;
+    font-size: 1.2em;
+}
+
 .hidden {
     display: none;
 }
@@ -183,4 +203,12 @@ body {
 .choice:hover {
     background: #F5F5F5;
     opacity: 0.8;
+}
+
+.flower-pic {
+
+    width: 100%;
+    display: block;
+    align-items: center;
+    justify-content: center;
 }
