@@ -26,7 +26,7 @@ const questions = [
 	    choices: ["Burning waste to reduce volume", "Burying waste in landfills", "Recycling organic waste into fertilizer", "Disposing of waste in oceans"],
 	    correctAnswer: 2
     },
-	/*{
+	{
         question: "6. Which ecosystem will not be affected by climate change?",
 	    choices: ["Rainforest", "Ice caps", "Desert", "None of the above"],
 	    correctAnswer: 3
@@ -112,7 +112,7 @@ const questions = [
 	    correctAnswer: 2
     },
 	{
-        question: 23. What does upcycling mean?",
+        question: "23. What does upcycling mean?",
 	    choices: ["Turning waste into energy", "Converting waste materials into new materials of higher quality", "Reusing products without alteration", "Disposing of waste in a responsible manner"],
 	    correctAnswer: 1
     },
@@ -125,7 +125,7 @@ const questions = [
         question: "25. What simple action can individuals take to help prevent ozone layer depletion?",
 	    choices: ["Planting trees", "Using energy-efficient appliances", "Reducing the use of aerosol sprays containing CFCs", "Recycling plastic bottles"],
 	    correctAnswer: 2
-     } */
+    }
 ];
 
 // List of quotes
