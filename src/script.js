@@ -272,19 +272,20 @@ window.onload = function() {
     quoteElement.textContent = getRandomQuote();
 };
 
+/* ************************************ */
 
-// script.js
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", () => {
+
     const clouds = document.querySelector('.clouds');
   
     // Clone the clouds for a seamless animation
     clouds.innerHTML += clouds.innerHTML;
-
-    // Clone the clouds for a seamless animation
     clouds.innerHTML += clouds.innerHTML;
   
     clouds.addEventListener('animationiteration', () => {
-      clouds.style.transform = 'translateX(0)';
+        clouds.style.transform = 'translateX(0)';
     });
-  });
-  
+
+});
+
+/* ************************************ */
