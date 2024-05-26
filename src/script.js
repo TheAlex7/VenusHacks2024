@@ -312,18 +312,18 @@ window.onload = function() {
 
 /* ************************************ */
 
-// document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
 
-//     const clouds = document.querySelector('.clouds');
+    const clouds = document.querySelector('.clouds');
   
-//     // Clone the clouds for a seamless animation
-//     clouds.innerHTML += clouds.innerHTML;
-//     clouds.innerHTML += clouds.innerHTML;
+    // Clone the clouds for a seamless animation
+    clouds.innerHTML += clouds.innerHTML;
+    clouds.innerHTML += clouds.innerHTML;
   
-//     clouds.addEventListener('animationiteration', () => {
-//         clouds.style.transform = 'translateX(0)';
-//     });
+    clouds.addEventListener('animationiteration', () => {
+        clouds.style.transform = 'translateX(0)';
+    });
 
-// });
+});
 
 /* ************************************ */
