@@ -5,12 +5,14 @@ const questions = [
         question: "1. Which of the following materials is not commonly recyclable?",
 	    choices: ["Glass", "Paper", "Plastic bags", "Aluminum cans"],
 	    correctAnswer: 2
-    },
+    }
+    ,
 	{
         question: "2. What does the recycling symbol with three arrows represent?",
 	    choices: ["Reduce, Reuse, Recycle", "Recycle, Replace, Renew","Reuse, Recycle, Restore", "Reduce, Renew, Reclaim"],
 	    correctAnswer: 0
-    },
+    }
+    ,
 	{
         question: "3. What is e-waste?",
 	    choices: ["Waste from agricultural practices", "Waste from electronic devices", "Waste from chemical spills", "Waste from construction sites"],
@@ -26,7 +28,7 @@ const questions = [
 	    choices: ["Burning waste to reduce volume", "Burying waste in landfills", "Recycling organic waste into fertilizer", "Disposing of waste in oceans"],
 	    correctAnswer: 2
     },
-	{
+	/*{
         question: "6. Which ecosystem will not be affected by climate change?",
 	    choices: ["Rainforest", "Ice caps", "Desert", "None of the above"],
 	    correctAnswer: 3
@@ -125,11 +127,14 @@ const questions = [
         question: "25. What simple action can individuals take to help prevent ozone layer depletion?",
 	    choices: ["Planting trees", "Using energy-efficient appliances", "Reducing the use of aerosol sprays containing CFCs", "Recycling plastic bottles"],
 	    correctAnswer: 2
-    }
+     } */
 ];
 
 let currentQuestionIndex = 0;
 let correctAnswers = 0;
+
+//set to add correctly answered questions
+const visitedQuestions = new Set();
 
 function startQuiz() {
 
@@ -141,82 +146,77 @@ function startQuiz() {
     
     // Show the question
     showQuestion();
+}
 
+// prints the random quote to the screen
+function printQuote(){
+    document.getElementById("quote").innerHTML = "random quote!";
+}
+function printScore(){
+    document.getElementById("score").innerHTML = `Score: ${correctAnswers}`;
 }
 
 function showQuestion() {
-
-    // Get the question and choices HTML elements
-    const questionElement = document.getElementById('question');
-    const choicesElements = document.getElementsByClassName('choice');
-    
-    // Set the question
-    questionElement.textContent = questions[currentQuestionIndex].question;
-
-    // Set the choices
-    Array.from(choicesElements).forEach((button, index) => {
-        button.textContent = questions[currentQuestionIndex].choices[index];
-    });
-
+    const question = questions[currentQuestionIndex];
+    loadQuestion(question.question, question.choices);
 }
 
 function selectAnswer(index) {
-
-    // Get the correct answer
+    const choicesElements = document.getElementsByClassName('choice');
     const correctAnswer = questions[currentQuestionIndex].correctAnswer;
 
-    // Check if the guess is correct
     if (index === correctAnswer) {
         correctAnswers++;
-        alert('Correct!');
+        visitedQuestions.add(currentQuestionIndex)
+        choicesElements[index].style.backgroundColor = '#28a745'; // Green color
     } else {
-        alert('Wrong!');
+        choicesElements[index].style.backgroundColor = '#dc3545'; // Red color
     }
 
-    // Increment the current question
-    currentQuestionIndex++;
+    for (let i = 0; i < choicesElements.length; i++) {
+        choicesElements[i].disabled = true;
+    }
 
-    // Show the next question, or return home
+    currentQuestionIndex++;
+    printScore();
+
     if (currentQuestionIndex < questions.length) {
-        showQuestion();
+        setTimeout(() => {
+            for (let i = 0; i < choicesElements.length; i++) {
+                choicesElements[i].style.backgroundColor = '#F5F5F5'; // Reset to default color
+                choicesElements[i].disabled = false;
+            }
+            showQuestion();
+        }, 1000); // Delay for 1 second
     } else {
-        alert('Quiz Completed!');
         showHome();
         currentQuestionIndex = 0;
+        correctAnswer = 0;
     }
-
 }
 
 function visitGarden() {
-
-    // Hide the home screen, show the garden
     hideHome();
     document.getElementById('garden-container').classList.remove('hidden');
 
-    // create the garden
     const gardenElement = document.getElementById('garden');
     gardenElement.innerHTML = '';
 
-    // add "correctAnswers" number of flower divs to the garden
-    for (let i = 0; i < correctAnswers; i++) {
+    for (let i = 0; i < correctAnswers; i+=5) {
         const flower = document.createElement('div');
         flower.className = 'flower';
         gardenElement.appendChild(flower);
     }
-
 }
 
 function showHome() {
-
-    // Show the home screen, title, and quote
     document.getElementById('home-screen').classList.remove('hidden');
     document.getElementById('game-title').classList.remove('hidden');
     document.getElementById('quote').classList.remove('hidden');
 
-    // Hide the quiz and garden
     document.getElementById('quiz-container').classList.add('hidden');
     document.getElementById('garden-container').classList.add('hidden');
-
+    document.getElementById('score').classList.add('hidden')
 }
 
 function exit() {
@@ -226,8 +226,8 @@ function exit() {
 
 
 function hideHome() {
-    // Hide the home screen, title, and quote
     document.getElementById('home-screen').classList.add('hidden');
     document.getElementById('game-title').classList.add('hidden');
     document.getElementById('quote').classList.add('hidden');
+    document.getElementById('score').classList.remove('hidden')
 }
