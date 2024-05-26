@@ -224,7 +224,6 @@ function exit() {
 	showHome()
 }
 
-document.getElementById('exit-button').addEventListener('click', exit);
 
 function hideHome() {
     // Hide the home screen, title, and quote
