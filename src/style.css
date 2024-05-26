@@ -64,6 +64,22 @@ body {
     background: rgb(209, 211, 115);
 }
 
+/*Exit button*/
+
+#exit-button {
+    background: rgba(251, 255, 0, 1);
+    color: rgb(9, 13, 72);
+    font-size: 35px;
+    padding: 20px 40px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
 /* Visit garden button */
 
 #visit-garden-button {
