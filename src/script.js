@@ -137,10 +137,13 @@ const quotes = [
     "With every sunrise, we get a chance to grow."
 ];
 
-let currentQuestionIndex = 0;
-let score = 0;
+let currentQuestionIndex;
+let score;
 
 function startQuiz() {
+
+    score = 0;
+    currentQuestionIndex = 0;
 
     // hide the home screen
     hideHome();
@@ -153,15 +156,16 @@ function startQuiz() {
     showQuestion();
 }
 
-// prints the random quote to the screen
-function printQuote() {
-    document.getElementById("quote").innerHTML = "random quote!";
-}
 function printScore() {
     document.getElementById("score").innerHTML = `Score: ${score}`;
 }
 
 function showQuestion() {
+
+    // Hide garden, show quiz and score
+    document.getElementById('garden-container').classList.add('hidden');
+    document.getElementById('quiz-container').classList.remove('hidden');
+    document.getElementById('score').classList.remove('hidden');
 
     // Get the question and choices HTML elements
     const questionElement = document.getElementById('question');
@@ -199,23 +203,29 @@ function selectAnswer(index) {
     currentQuestionIndex++;
     printScore();
 
-    if (score % 5 == 0) {
+    if (score != 0 && score % 5 == 0) {
         visitGarden();
     }
 
-    if (currentQuestionIndex < questions.length) {
-        setTimeout(() => {
-            for (let i = 0; i < choicesElements.length; i++) {
-                choicesElements[i].style.backgroundColor = '#F5F5F5'; // Reset to default color
-                choicesElements[i].disabled = false;
-            }
-            showQuestion();
-        }, 1000); // Delay for 1 second
-    } else {
+    if (currentQuestionIndex > questions.length) {
         showHome();
-        currentQuestionIndex = 0;
-        score = 0;
+        return;
     }
+
+    setTimeout(() => {
+
+        for (let i = 0; i < choicesElements.length; i++) {
+            choicesElements[i].style.backgroundColor = '#F5F5F5'; // Reset to default color
+            choicesElements[i].disabled = false;
+        }
+
+        if (currentQuestionIndex < questions.length) {
+            showQuestion();
+        } else {
+            visitGarden();
+        }
+
+    }, 1000); // Delay for 1 second
 
 }
 
@@ -225,6 +235,16 @@ function visitGarden() {
     hideHome();
     document.getElementById('quiz-container').classList.add('hidden');
     document.getElementById('garden-container').classList.remove('hidden');
+
+    // Add the current score, and hide the top-right score
+    document.getElementById("score").classList.add('hidden');
+    document.getElementById('garden-score').innerHTML = `Current score: ${score}`;
+
+    // If game is over, print the final score and hide the "back to game" button
+    if (currentQuestionIndex == questions.length) {
+        document.getElementById('garden-score').innerHTML = `Game over! Final score: ${score}`;
+        document.getElementById('garden-to-game').classList.add('hidden');
+    }
 
     // create the garden
     const gardenElement = document.getElementById('garden');
@@ -249,6 +269,7 @@ function showHome() {
     document.getElementById('quiz-container').classList.add('hidden');
     document.getElementById('garden-container').classList.add('hidden');
     document.getElementById('score').classList.add('hidden');
+
 }
 
 function hideHome() {
