@@ -128,6 +128,15 @@ const questions = [
      } */
 ];
 
+// List of quotes
+const quotes = [
+    "Every flower must grow through dirt.",
+    "The seeds you plant today will become the flowers of tomorrow.",
+    "Stay rooted, but never stop reaching for the sky.",
+    "Plants teach us that growth requires patience and perseverance.",
+    "With every sunrise, we get a chance to grow."
+];
+
 let currentQuestionIndex = 0;
 let score = 0;
 
@@ -250,3 +259,15 @@ function hideHome() {
     document.getElementById('score').classList.remove('hidden');
 
 }
+
+// Get a random quote
+function getRandomQuote() {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    return `"${quotes[randomIndex]}"`;
+}
+
+// Display a random quote on the page
+window.onload = function() {
+    const quoteElement = document.getElementById('quote');
+    quoteElement.textContent = getRandomQuote();
+};
