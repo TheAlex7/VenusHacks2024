@@ -266,6 +266,9 @@ function visitGarden() {
 }
 
 function showHome() {
+    //new quote everytime home loads
+    const quoteElement = document.getElementById('quote');
+    quoteElement.textContent = getRandomQuote();
 
     // Show the home screen, title, and quote
     document.getElementById('home-screen').classList.remove('hidden');
