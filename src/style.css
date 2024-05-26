@@ -77,7 +77,7 @@ body {
     transition: background 0.3s;
     position: fixed;
     bottom: 10px;
-    right: 10px;
+    left: 10px;
 }
 
 /* Visit garden button */
