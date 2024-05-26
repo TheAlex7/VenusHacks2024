@@ -1,9 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Sofia");
+/* @import url('https://fonts.googleapis.com/css2?family=Honk&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Honk:MORF,SHLN@41,29.6&display=swap'); */
 
 @font-face {
-    font-family: flower;
-    src: url(./assets/flower.TTF);
+    font-family: "Flower";
+    src: url(./assets/flower.TTF) format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
+
 body {
     font-family: Arial, sans-serif;
     background-image: url('./assets/background.png');
@@ -26,7 +31,8 @@ body {
     position: absolute;
     color: black;
     font-size: 50px;
-    font-family: flower, Arial;
+    /* font-family: "Sofia", Arial; */
+    font-family: "Flower", Arial;
     top: 0;
 }
 
@@ -34,8 +40,8 @@ body {
     background: rgba(251, 255, 0,1);
     color: rgb(9, 13, 72);
     font-size: 50px;
-    /* font-family: "Sofia", Arial; */
-    font-family: flower, Arial;
+    font-family: "Sofia", Arial;
+    /* font-family: "flower", Arial; */
     padding: 20px 40px;
     border: none;
     border-radius: 10px;
