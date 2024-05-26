@@ -26,7 +26,7 @@ const questions = [
 	    choices: ["Burning waste to reduce volume", "Burying waste in landfills", "Recycling organic waste into fertilizer", "Disposing of waste in oceans"],
 	    correctAnswer: 2
     },
-	/*{
+	{
         question: "6. Which ecosystem will not be affected by climate change?",
 	    choices: ["Rainforest", "Ice caps", "Desert", "None of the above"],
 	    correctAnswer: 3
@@ -112,7 +112,7 @@ const questions = [
 	    correctAnswer: 2
     },
 	{
-        question: 23. What does upcycling mean?",
+        question: "23. What does upcycling mean?",
 	    choices: ["Turning waste into energy", "Converting waste materials into new materials of higher quality", "Reusing products without alteration", "Disposing of waste in a responsible manner"],
 	    correctAnswer: 1
     },
@@ -125,7 +125,7 @@ const questions = [
         question: "25. What simple action can individuals take to help prevent ozone layer depletion?",
 	    choices: ["Planting trees", "Using energy-efficient appliances", "Reducing the use of aerosol sprays containing CFCs", "Recycling plastic bottles"],
 	    correctAnswer: 2
-     } */
+    }
 ];
 
 // List of quotes
@@ -136,6 +136,8 @@ const quotes = [
     "Plants teach us that growth requires patience and perseverance.",
     "With every sunrise, we get a chance to grow."
 ];
+
+const flowers = ["rose", "sunflower", "marigold", "tulip", "camellia"];
 
 let currentQuestionIndex;
 let score;
@@ -206,10 +208,6 @@ function selectAnswer(index) {
     currentQuestionIndex++;
     printScore();
 
-    if (score != 0 && score % 5 == 0) {
-        visitGarden();
-    }
-
     if (currentQuestionIndex > questions.length) {
         showHome();
         return;
@@ -222,10 +220,10 @@ function selectAnswer(index) {
             choicesElements[i].disabled = false;
         }
 
-        if (currentQuestionIndex < questions.length) {
-            showQuestion();
-        } else {
+        if (currentQuestionIndex >= questions.length || (score != 0 && score % 5 == 0)) {
             visitGarden();
+        } else {
+            showQuestion();
         }
 
     }, 1000); // Delay for 1 second
@@ -252,16 +250,19 @@ function visitGarden() {
         document.getElementById('garden-to-game').classList.add('hidden');
     }
 
-    // create the garden
-    const gardenElement = document.getElementById('garden');
-    gardenElement.innerHTML = '';
+    // show unlocked flowers after 1 second
+    setTimeout(() => {
 
-    // add "score" number of flower divs to the garden
-    for (let i = 0; i < score; i += 5) {
-        const flower = document.createElement('div');
-        flower.className = 'flower';
-        gardenElement.appendChild(flower);
-    }
+        let currentLevel = Math.floor(score / 5);
+        
+        if (currentLevel != 0) {
+            let currentFlower = flowers[currentLevel - 1];
+            document.getElementById(`${currentFlower}-lock`).classList.add('hidden');
+            document.getElementById(currentFlower).classList.remove('hidden');
+        }
+
+    }, 1000); // Delay for 1 second
+
 }
 
 function showHome() {
@@ -276,6 +277,12 @@ function showHome() {
     document.getElementById('garden-container').classList.add('hidden');
     document.getElementById("visit-garden-button").classList.add('hidden');
     document.getElementById('score').classList.add('hidden');
+
+    // hide flowers, and show flower locks
+    flowers.forEach((flower) => {
+        document.getElementById(flower).classList.add('hidden');
+        document.getElementById(`${flower}-lock`).classList.remove('hidden');
+    });
 
 }
 
