@@ -199,6 +199,10 @@ function selectAnswer(index) {
     currentQuestionIndex++;
     printScore();
 
+    if (score % 5 == 0) {
+        visitGarden();
+    }
+
     if (currentQuestionIndex < questions.length) {
         setTimeout(() => {
             for (let i = 0; i < choicesElements.length; i++) {
