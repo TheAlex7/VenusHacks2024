@@ -17,7 +17,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
 }
 
@@ -93,6 +93,7 @@ body {
 
 #quiz-container, #garden-container {
     background: rgba( 0, 48.2, 51.4, 0.6); /* Slightly transparent background */
+    margin: 16px;
     padding: 20px;
     color:aliceblue;
     /* font-family: "Sofia", Arial; */
@@ -101,7 +102,6 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 500px;
-    height: 800px;
     text-align: center;
 }
 
@@ -139,7 +139,7 @@ body {
     background: #F5F5F5;
     opacity: 0.6;
     color: rgb(0, 0, 0);
-    font-size: 35px;
+    font-size: clamp(20px, 5vw, 40px); /* Adjust text size to fit container */
     font-family: 'hey comic';
     border: none;
     border-radius: 5px;

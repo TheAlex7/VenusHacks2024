@@ -145,49 +145,29 @@ function startQuiz() {
 }
 
 function showQuestion() {
-
-    // Get the question and choices HTML elements
-    const questionElement = document.getElementById('question');
-    const choicesElements = document.getElementsByClassName('choice');
-    
-    // Set the question
-    questionElement.textContent = questions[currentQuestionIndex].question;
-
-    // Set the choices
-    Array.from(choicesElements).forEach((button, index) => {
-        button.textContent = questions[currentQuestionIndex].choices[index];
-    });
-
+    const question = questions[currentQuestionIndex];
+    loadQuestion(question.question, question.choices);
 }
 
 function selectAnswer(index) {
-    
     const choicesElements = document.getElementsByClassName('choice');
-    // Get the correct answer
     const correctAnswer = questions[currentQuestionIndex].correctAnswer;
 
-    // Check if the guess is correct
     if (index === correctAnswer) {
         correctAnswers++;
-        // Change background color to green for the correct answer
         choicesElements[index].style.backgroundColor = '#28a745'; // Green color
     } else {
-        // Change background color to red for the wrong answer
         choicesElements[index].style.backgroundColor = '#dc3545'; // Red color
     }
 
-    // Disable further clicks on choices
     for (let i = 0; i < choicesElements.length; i++) {
         choicesElements[i].disabled = true;
     }
 
-    // Increment the current question
     currentQuestionIndex++;
 
-    // Show the next question, or return home
     if (currentQuestionIndex < questions.length) {
         setTimeout(() => {
-            // Reset background colors and enable choices for next question after a delay
             for (let i = 0; i < choicesElements.length; i++) {
                 choicesElements[i].style.backgroundColor = '#F5F5F5'; // Reset to default color
                 choicesElements[i].disabled = false;
@@ -198,44 +178,217 @@ function selectAnswer(index) {
         showHome();
         currentQuestionIndex = 0;
     }
-
 }
 
 function visitGarden() {
-
-    // Hide the home screen, show the garden
     hideHome();
     document.getElementById('garden-container').classList.remove('hidden');
 
-    // create the garden
     const gardenElement = document.getElementById('garden');
     gardenElement.innerHTML = '';
 
-    // add "correctAnswers" number of flower divs to the garden
     for (let i = 0; i < correctAnswers; i++) {
         const flower = document.createElement('div');
         flower.className = 'flower';
         gardenElement.appendChild(flower);
     }
-
 }
 
 function showHome() {
-
-    // Show the home screen, title, and quote
     document.getElementById('home-screen').classList.remove('hidden');
     document.getElementById('game-title').classList.remove('hidden');
     document.getElementById('quote').classList.remove('hidden');
 
-    // Hide the quiz and garden
     document.getElementById('quiz-container').classList.add('hidden');
     document.getElementById('garden-container').classList.add('hidden');
-
 }
 
 function hideHome() {
-    // Hide the home screen, title, and quote
     document.getElementById('home-screen').classList.add('hidden');
     document.getElementById('game-title').classList.add('hidden');
     document.getElementById('quote').classList.add('hidden');
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    function adjustFontSize(element) {
+        const height = element.clientHeight;
+        const width = element.clientWidth;
+        const textLength = element.textContent.length;
+        const fontSize = Math.min(30, Math.sqrt((width * height) / textLength) * 0.8);
+        element.style.fontSize = fontSize + 'px';
+    }
+
+    const choices = document.querySelectorAll('.choice');
+
+    choices.forEach(choice => {
+        adjustFontSize(choice);
+    });
+
+    function loadQuestion(questionText, answers) {
+        document.getElementById('question').textContent = questionText;
+        choices.forEach((choice, index) => {
+            choice.textContent = answers[index] || '';
+            adjustFontSize(choice);
+        });
+    }
+
+    window.loadQuestion = loadQuestion;
+
+    if (questions.length > 0) {
+        loadQuestion(questions[0].question, questions[0].choices);
+    }
+});
+
+
+
+// function showQuestion() {
+
+//     // Get the question and choices HTML elements
+//     const questionElement = document.getElementById('question');
+//     const choicesElements = document.getElementsByClassName('choice');
+    
+//     // Set the question
+//     questionElement.textContent = questions[currentQuestionIndex].question;
+
+//     // Set the choices
+//     Array.from(choicesElements).forEach((button, index) => {
+//         button.textContent = questions[currentQuestionIndex].choices[index];
+//     });
+
+// }
+
+// function selectAnswer(index) {
+
+//     const choicesElements = document.getElementsByClassName('choice');
+//     // Get the correct answer
+//     const correctAnswer = questions[currentQuestionIndex].correctAnswer;
+
+//     // Check if the guess is correct
+//     if (index === correctAnswer) {
+//         correctAnswers++;
+//         // Change background color to green for the correct answer
+//         choicesElements[index].style.backgroundColor = '#28a745'; // Green color
+//     } else {
+//         // Change background color to red for the wrong answer
+//         choicesElements[index].style.backgroundColor = '#dc3545'; // Red color
+//     }
+
+//     // Disable further clicks on choices
+//     for (let i = 0; i < choicesElements.length; i++) {
+//         choicesElements[i].disabled = true;
+//     }
+
+//     // Increment the current question
+//     currentQuestionIndex++;
+
+//     // Show the next question, or return home
+//     if (currentQuestionIndex < questions.length) {
+//         setTimeout(() => {
+//             // Reset background colors and enable choices for next question after a delay
+//             for (let i = 0; i < choicesElements.length; i++) {
+//                 choicesElements[i].style.backgroundColor = '#F5F5F5'; // Reset to default color
+//                 choicesElements[i].disabled = false;
+//             }
+//             showQuestion();
+//         }, 1000); // Delay for 1 second
+//     } else {
+//         showHome();
+//         currentQuestionIndex = 0;
+//     }
+
+// }
+
+// function visitGarden() {
+
+//     // Hide the home screen, show the garden
+//     hideHome();
+//     document.getElementById('garden-container').classList.remove('hidden');
+
+//     // create the garden
+//     const gardenElement = document.getElementById('garden');
+//     gardenElement.innerHTML = '';
+
+//     // add "correctAnswers" number of flower divs to the garden
+//     for (let i = 0; i < correctAnswers; i++) {
+//         const flower = document.createElement('div');
+//         flower.className = 'flower';
+//         gardenElement.appendChild(flower);
+//     }
+
+// }
+
+// function showHome() {
+
+//     // Show the home screen, title, and quote
+//     document.getElementById('home-screen').classList.remove('hidden');
+//     document.getElementById('game-title').classList.remove('hidden');
+//     document.getElementById('quote').classList.remove('hidden');
+
+//     // Hide the quiz and garden
+//     document.getElementById('quiz-container').classList.add('hidden');
+//     document.getElementById('garden-container').classList.add('hidden');
+
+// }
+
+// function hideHome() {
+//     // Hide the home screen, title, and quote
+//     document.getElementById('home-screen').classList.add('hidden');
+//     document.getElementById('game-title').classList.add('hidden');
+//     document.getElementById('quote').classList.add('hidden');
+// }
+
+// document.addEventListener("DOMContentLoaded", function() {
+//     // Function to adjust font size dynamically based on content
+//     function adjustFontSize(element) {
+//         // Get the height of the choice button
+//         const height = element.clientHeight;
+//         // Get the width of the choice button
+//         const width = element.clientWidth;
+//         // Get the number of characters in the text
+//         const textLength = element.textContent.length;
+//         // Calculate the font size based on the height, width, and text length
+//         const fontSize = Math.min(30, Math.sqrt((width * height) / textLength) * 0.8); // Adjust the multiplier as needed
+//         // Apply the calculated font size
+//         element.style.fontSize = fontSize + 'px';
+//     }
+
+
+//     // Get all choice buttons
+//     const choices = document.querySelectorAll('.choice');
+
+//     // Loop through each choice button and adjust font size
+//     choices.forEach(choice => {
+//         adjustFontSize(choice);
+//     });
+
+//     // Optional: Adjust font size when new questions are loaded or choices are updated
+//     function updateChoices() {
+//         choices.forEach(choice => {
+//             adjustFontSize(choice);
+//         });
+//     }
+
+
+//     // Function to adjust font size dynamically based on content
+//     function adjustFontSize(element) {
+//         // Get the height of the choice button
+//         const height = element.clientHeight;
+//         // Get the number of characters in the text
+//         const textLength = element.textContent.length;
+//         // Calculate the font size based on the height and text length
+//         const fontSize = Math.min(30, height / (textLength * 0.6)); // Adjust the multiplier as needed
+//         // Apply the calculated font size
+//         element.style.fontSize = fontSize + 'px';
+//     }
+
+//     // Example function for loading a question and updating font sizes
+//     function loadQuestion(questionText, answers) {
+//         document.getElementById('question').textContent = questionText;
+//         choices.forEach((choice, index) => {
+//             choice.textContent = answers[index] || '';
+//             adjustFontSize(choice);
+//         });
+//     }
+
+// });
+
