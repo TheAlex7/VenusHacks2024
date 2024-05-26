@@ -5,14 +5,12 @@ const questions = [
         question: "1. Which of the following materials is not commonly recyclable?",
 	    choices: ["Glass", "Paper", "Plastic bags", "Aluminum cans"],
 	    correctAnswer: 2
-    }
-    ,
+    },
 	{
         question: "2. What does the recycling symbol with three arrows represent?",
 	    choices: ["Reduce, Reuse, Recycle", "Recycle, Replace, Renew","Reuse, Recycle, Restore", "Reduce, Renew, Reclaim"],
 	    correctAnswer: 0
-    }
-    ,
+    },
 	{
         question: "3. What is e-waste?",
 	    choices: ["Waste from agricultural practices", "Waste from electronic devices", "Waste from chemical spills", "Waste from construction sites"],
@@ -131,10 +129,7 @@ const questions = [
 ];
 
 let currentQuestionIndex = 0;
-let correctAnswers = 0;
-
-//set to add correctly answered questions
-const visitedQuestions = new Set();
+let score = 0;
 
 function startQuiz() {
 
@@ -145,29 +140,44 @@ function startQuiz() {
     document.getElementById('quiz-container').classList.remove('hidden');
     
     // Show the question
+    printScore();
     showQuestion();
 }
 
 // prints the random quote to the screen
-function printQuote(){
+function printQuote() {
     document.getElementById("quote").innerHTML = "random quote!";
 }
-function printScore(){
-    document.getElementById("score").innerHTML = `Score: ${correctAnswers}`;
+function printScore() {
+    document.getElementById("score").innerHTML = `Score: ${score}`;
 }
 
 function showQuestion() {
-    const question = questions[currentQuestionIndex];
-    loadQuestion(question.question, question.choices);
+
+    // Get the question and choices HTML elements
+    const questionElement = document.getElementById('question');
+    const choicesElements = document.getElementsByClassName('choice');
+    
+    // Set the question
+    questionElement.textContent = questions[currentQuestionIndex].question;
+
+    // Set the choices
+    Array.from(choicesElements).forEach((button, index) => {
+        button.textContent = questions[currentQuestionIndex].choices[index];
+    });
+
 }
 
 function selectAnswer(index) {
+
     const choicesElements = document.getElementsByClassName('choice');
+
+    // Get the correct answer
     const correctAnswer = questions[currentQuestionIndex].correctAnswer;
 
+    // Check if the guess is correct
     if (index === correctAnswer) {
-        correctAnswers++;
-        visitedQuestions.add(currentQuestionIndex)
+        score++;
         choicesElements[index].style.backgroundColor = '#28a745'; // Green color
     } else {
         choicesElements[index].style.backgroundColor = '#dc3545'; // Red color
@@ -191,43 +201,52 @@ function selectAnswer(index) {
     } else {
         showHome();
         currentQuestionIndex = 0;
-        correctAnswer = 0;
+        score = 0;
     }
+
 }
 
 function visitGarden() {
+
+    // Hide the home screen and the quiz, and show the garden
     hideHome();
+    document.getElementById('quiz-container').classList.add('hidden');
     document.getElementById('garden-container').classList.remove('hidden');
 
+    // create the garden
     const gardenElement = document.getElementById('garden');
     gardenElement.innerHTML = '';
 
-    for (let i = 0; i < correctAnswers; i+=5) {
+    // add "score" number of flower divs to the garden
+    for (let i = 0; i < score; i += 5) {
         const flower = document.createElement('div');
         flower.className = 'flower';
         gardenElement.appendChild(flower);
     }
+
 }
 
 function showHome() {
+
+    // Show the home screen, title, and quote
     document.getElementById('home-screen').classList.remove('hidden');
     document.getElementById('game-title').classList.remove('hidden');
     document.getElementById('quote').classList.remove('hidden');
 
+    // Hide the quiz, garden, and score
     document.getElementById('quiz-container').classList.add('hidden');
     document.getElementById('garden-container').classList.add('hidden');
-    document.getElementById('score').classList.add('hidden')
+    document.getElementById('score').classList.add('hidden');
 }
-
-function exit() {
-	//Returns to home screen when exit button is pressed
-	showHome()
-}
-
 
 function hideHome() {
+
+    // Hide the home screen, title, and quote
     document.getElementById('home-screen').classList.add('hidden');
     document.getElementById('game-title').classList.add('hidden');
     document.getElementById('quote').classList.add('hidden');
-    document.getElementById('score').classList.remove('hidden')
+
+    // Show the score
+    document.getElementById('score').classList.remove('hidden');
+
 }
