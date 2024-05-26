@@ -162,9 +162,12 @@ function printScore() {
 
 function showQuestion() {
 
-    // Hide garden, show quiz and score
+    // Hide garden
     document.getElementById('garden-container').classList.add('hidden');
+
+    // show quiz, visit garden button, and score
     document.getElementById('quiz-container').classList.remove('hidden');
+    document.getElementById("visit-garden-button").classList.remove('hidden');
     document.getElementById('score').classList.remove('hidden');
 
     // Get the question and choices HTML elements
@@ -236,8 +239,11 @@ function visitGarden() {
     document.getElementById('quiz-container').classList.add('hidden');
     document.getElementById('garden-container').classList.remove('hidden');
 
-    // Add the current score, and hide the top-right score
+    // hide the top-right score and "view garden" button 
     document.getElementById("score").classList.add('hidden');
+    document.getElementById("visit-garden-button").classList.add('hidden');
+
+    // Add the current score
     document.getElementById('garden-score').innerHTML = `Current score: ${score}`;
 
     // If game is over, print the final score and hide the "back to game" button
@@ -265,9 +271,10 @@ function showHome() {
     document.getElementById('game-title').classList.remove('hidden');
     document.getElementById('quote').classList.remove('hidden');
 
-    // Hide the quiz, garden, and score
+    // Hide the quiz, garden, visit garden button, and score
     document.getElementById('quiz-container').classList.add('hidden');
     document.getElementById('garden-container').classList.add('hidden');
+    document.getElementById("visit-garden-button").classList.add('hidden');
     document.getElementById('score').classList.add('hidden');
 
 }
