@@ -1,15 +1,15 @@
 @font-face {
     font-family: 'hey comic';
-    src: url(../assets/fonts/hey_comic/heyComic.ttf) format('truetype');
+    src: url(./assets/fonts/hey_comic/heyComic.ttf) format('truetype');
 }
 
 @font-face {
     font-family: 'flower glory';
-    src: url(../assets/fonts/flowerGlory.ttf) format('truetype');
+    src: url(./assets/fonts/flowerGlory.ttf) format('truetype');
 }
 
 body {
-    background-image: url('../assets/images/background.png');
+    background-image: url('./assets/images/background.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
