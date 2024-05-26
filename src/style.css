@@ -139,23 +139,29 @@ body {
     text-align: center;
 }
 
+#garden-score {
+    margin: 0px 0px 25px 0px;
+}
+
+/* Lines 150-165 are the CSS for the buttons in the garden menu. */
+/* They look OK right now, but I'm not totally set on this version. */
+/* What's the best way to format these? */
+
 #garden-container button {
-    /* display: block; */
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    background: #F5F5F5;
-    opacity: 0.6;
-    color: rgb(0, 0, 0);
+    background: rgba(251, 255, 0,1);
+    color: rgb(9, 13, 72);
+    font-size: 35px;
+    font-family: 'hey comic';
+    padding: 20px 40px;
+    margin: 10px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     transition: background 0.3s;
 }
 
 #garden-container button:hover {
-    background: #F5F5F5;
-    opacity: 0.8;
+    background: rgb(209, 211, 115);
 }
 
 /* Flowers */
