@@ -309,3 +309,21 @@ window.onload = function() {
     const quoteElement = document.getElementById('quote');
     quoteElement.textContent = getRandomQuote();
 };
+
+/* ************************************ */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const clouds = document.querySelector('.clouds');
+  
+    // Clone the clouds for a seamless animation
+    clouds.innerHTML += clouds.innerHTML;
+    clouds.innerHTML += clouds.innerHTML;
+  
+    clouds.addEventListener('animationiteration', () => {
+        clouds.style.transform = 'translateX(0)';
+    });
+
+});
+
+/* ************************************ */
