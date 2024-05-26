@@ -6,17 +6,19 @@ const questions = [
 	    choices: ["Glass", "Paper", "Plastic bags", "Aluminum cans"],
 	    correctAnswer: 2
     }
+    ,
+	{
+        question: "What does the recycling symbol with three arrows represent?",
+	    choices: ["Reduce, Reuse, Recycle", "Recycle, Replace, Renew","Reuse, Recycle, Restore", "Reduce, Renew, Reclaim"],
+	    correctAnswer: 0
+    }
+    ,
+	{
+        question: "What is e-waste?",
+	    choices: ["Waste from agricultural practices", "Waste from electronic devices", "Waste from chemical spills", "Waste from construction sites"],
+	    correctAnswer: 1
+    }
     // ,
-	// {
-    //     question: "What does the recycling symbol with three arrows represent?",
-	//     choices: ["Reduce, Reuse, Recycle", "Recycle, Replace, Renew","Reuse, Recycle, Restore", "Reduce, Renew, Reclaim"],
-	//     correctAnswer: 0
-    // },
-	// {
-    //     question: "What is e-waste?",
-	//     choices: ["Waste from agricultural practices", "Waste from electronic devices", "Waste from chemical spills", "Waste from construction sites"],
-	//     correctAnswer: 1
-    // },
 	// {
     //     question: "How can you reduce the amount of carbon emissions?", 
 	//     choices: ["Plant a tree", "Carpool", "Keep the lights on when you leave the house", "Both a and b"],
@@ -132,6 +134,9 @@ const questions = [
 let currentQuestionIndex = 0;
 let correctAnswers = 0;
 
+//set to add correctly answered questions
+const visitedQuestions = new Set();
+
 function startQuiz() {
 
     // hide the home screen
@@ -142,7 +147,14 @@ function startQuiz() {
     
     // Show the question
     showQuestion();
+}
 
+// prints the random quote to the screen
+function printQuote(){
+    document.getElementById("quote").innerHTML = "random quote!";
+}
+function printScore(){
+    document.getElementById("score").innerHTML = `Score: ${correctAnswers}`;
 }
 
 function showQuestion() {
@@ -156,6 +168,7 @@ function selectAnswer(index) {
 
     if (index === correctAnswer) {
         correctAnswers++;
+        visitedQuestions.add(currentQuestionIndex)
         choicesElements[index].style.backgroundColor = '#28a745'; // Green color
     } else {
         choicesElements[index].style.backgroundColor = '#dc3545'; // Red color
@@ -166,6 +179,7 @@ function selectAnswer(index) {
     }
 
     currentQuestionIndex++;
+    printScore();
 
     if (currentQuestionIndex < questions.length) {
         setTimeout(() => {
@@ -178,6 +192,7 @@ function selectAnswer(index) {
     } else {
         showHome();
         currentQuestionIndex = 0;
+        correctAnswer = 0;
     }
 }
 
@@ -188,7 +203,7 @@ function visitGarden() {
     const gardenElement = document.getElementById('garden');
     gardenElement.innerHTML = '';
 
-    for (let i = 0; i < correctAnswers; i++) {
+    for (let i = 0; i < correctAnswers; i+=5) {
         const flower = document.createElement('div');
         flower.className = 'flower';
         gardenElement.appendChild(flower);
@@ -202,15 +217,20 @@ function showHome() {
 
     document.getElementById('quiz-container').classList.add('hidden');
     document.getElementById('garden-container').classList.add('hidden');
+    document.getElementById('score').classList.add('hidden')
 }
 
 function hideHome() {
     document.getElementById('home-screen').classList.add('hidden');
     document.getElementById('game-title').classList.add('hidden');
     document.getElementById('quote').classList.add('hidden');
+
+    document.getElementById('score').classList.remove('hidden')
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+    printScore();
+    printQuote();
     function adjustFontSize(element) {
         const height = element.clientHeight;
         const width = element.clientWidth;
