@@ -2,12 +2,6 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Honk&display=swap'); */
 
 @font-face {
-    font-family: "Garden";
-    src: url(src/client/assets/GardenerstypepersonaluseBold-Yzj78.otf);
-
-    font-family: "Flower";
-    src: url(../assets/flower.ttf) format('truetype');
-
     font-family: 'hey comic';
     src: url(../assets/fonts/hey_comic/heyComic.ttf) format('truetype');
 }
