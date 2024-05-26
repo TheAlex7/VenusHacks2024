@@ -3,8 +3,15 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Honk:MORF,SHLN@41,29.6&display=swap'); */
 
 @font-face {
+    font-family: "Garden";
+    src: url('src\\client\\assets\\GardenerstypepersonaluseBold-Yzj78.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
     font-family: "Flower";
-    src: url(./assets/flower.TTF) format('truetype');
+    src: url('./assets/flower.TTF') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -58,7 +65,7 @@ body {
     position: absolute;
     color: black;
     font-size: 20px;
-    font-family: flower, Arial;
+    font-family: "Garden", Arial;
     bottom: 0;
 }
 
