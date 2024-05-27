@@ -1,6 +1,12 @@
 # Touch Flower
 Touch Flower combines the beauty of gardening with a test of environmental knowledge. Step into the garden, touch a flower, and grow your knowledge of the natural world!
 
+- Check out the game by visiting our [GitHub pages](https://thealex7.github.io/VenusHacks2024/).
+- Check out our [DevPost submission](https://devpost.com/software/touch-flower).
+
+
+# More Information
+
 ### Inspiration
 Gardening with an ecological impact. We want to motivate people to connect with nature by gardening and by making sustainable lifestyle choices.
 
@@ -23,8 +29,3 @@ We (re)learned how to create a site from backend to frontend using HTML, CSS, an
 In the future, users will be able to log into Touch Flower and save their progress. They will also be able to customize their garden; instead of unlocking one particular flower, they will be given a choice of what to add to their garden.
 
 We also want to implement other minigames through which users can earn certain flowers. These will be distinct from the flowers that can be earned through the trivia game.
-
-# See More
-
-- Check out the game by visiting our [GitHub pages](https://thealex7.github.io/VenusHacks2024/).
-- Check out our [DevPost submission](https://devpost.com/software/touch-flower).
